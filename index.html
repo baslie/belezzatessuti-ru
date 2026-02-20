@@ -517,12 +517,18 @@
 
     .bz-mobile-menu__body {
         display: none;
-        flex-direction: column;
         padding: 0 16px 12px;
+        columns: 2;
+        column-gap: 24px;
     }
 
     .bz-mobile-menu__category--open .bz-mobile-menu__body {
-        display: flex;
+        display: block;
+    }
+
+    .bz-mobile-menu__group {
+        break-inside: avoid;
+        margin-bottom: 4px;
     }
 
     .bz-mobile-menu__group-title {
@@ -602,6 +608,8 @@
             border-radius: 0 0 4px 4px;
             margin: 0 8px 8px;
             padding: 8px 12px 12px;
+            columns: 2;
+            column-gap: 16px;
         }
 
         .bz-topbar {
@@ -641,6 +649,12 @@
 
         .bz-topbar__phone {
             font-size: 13px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .bz-mobile-menu__body {
+            columns: 1;
         }
     }
 
@@ -766,18 +780,23 @@
 
                     if (section.groups && section.groups.length) {
                         section.groups.forEach(function(group) {
+                            var wrapper = document.createElement("div");
+                            wrapper.className = "bz-mobile-menu__group";
+
                             var gt = document.createElement("div");
                             gt.className = "bz-mobile-menu__group-title";
                             gt.textContent = group.title;
-                            body.appendChild(gt);
+                            wrapper.appendChild(gt);
 
                             group.items.forEach(function(item) {
                                 var a = document.createElement("a");
                                 a.className = "bz-mobile-menu__link";
                                 a.href = item.href;
                                 a.textContent = item.name;
-                                body.appendChild(a);
+                                wrapper.appendChild(a);
                             });
+
+                            body.appendChild(wrapper);
                         });
                     } else if (section.items && section.items.length) {
                         section.items.forEach(function(item) {

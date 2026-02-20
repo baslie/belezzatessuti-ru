@@ -568,28 +568,61 @@
             display: none !important;
         }
 
+        /* Бургер скрыт — меню видно сразу */
         .bz-mobile-toggle {
-            display: flex;
+            display: none !important;
         }
 
-        .bz-mobile-toggle--open {
-            border-radius: 0;
+        /* Меню всегда видно на мобильных — зелёный фон как десктопный бар */
+        .bz-mobile-menu {
+            display: flex;
+            background: var(--bz-bar-bg);
+            border-radius: var(--bz-bar-radius);
+            box-shadow: none;
+        }
+
+        .bz-mobile-menu__category {
+            border-bottom-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .bz-mobile-menu__header {
+            color: var(--bz-bar-text);
+        }
+
+        .bz-mobile-menu__header:hover {
+            background: var(--bz-bar-hover);
+        }
+
+        .bz-mobile-menu__arrow {
+            border-top-color: var(--bz-bar-text);
+        }
+
+        .bz-mobile-menu__body {
+            background: var(--bz-dropdown-bg);
+            border-radius: 0 0 4px 4px;
+            margin: 0 8px 8px;
+            padding: 8px 12px 12px;
         }
 
         .bz-topbar {
             padding: 12px 14px;
             flex-wrap: wrap;
             gap: 8px;
+            justify-content: center;
         }
 
         .bz-topbar__slogan {
             font-size: 14px;
             max-width: 100%;
+            width: 100%;
+            text-align: center;
         }
 
         .bz-topbar__right {
             padding-left: 0;
             flex-shrink: 1;
+            margin-left: 0;
+            justify-content: center;
         }
 
         .bz-topbar__socials {
@@ -608,6 +641,18 @@
 
         .bz-topbar__phone {
             font-size: 13px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .bz-topbar__right {
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bz-topbar__socials {
+            order: -1;
         }
     }
 

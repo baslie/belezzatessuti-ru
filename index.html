@@ -547,6 +547,12 @@ const WIDGET_CONFIG = {
 
 /* ===== Адаптивность ===== */
 @media (max-width: 767px) {
+    #bz-menu-root {
+        min-width: 0;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
     .bz-bar {
         display: none !important;
     }
@@ -565,14 +571,17 @@ const WIDGET_CONFIG = {
 
     .bz-topbar {
         padding: 12px 14px;
+        flex-wrap: wrap;
+        gap: 8px;
     }
 
     .bz-topbar__slogan {
         font-size: 14px;
+        max-width: 100%;
     }
 
     .bz-topbar__right {
-        padding-left: 16px;
+        padding-left: 0;
     }
 
     .bz-topbar__socials {
